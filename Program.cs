@@ -77,8 +77,9 @@ namespace Employee1
         {
             //Implementation
             var query = from employee in employeeList join sal in salaryList on employee.EmployeeID equals sal.EmployeeID  into employeeDet select new { empAge=employee.Age,avgSal = employeeDet.Average(s => s.Amount) };
-            foreach ( var emp in query.OrderBy(a=>a.empAge))
+            foreach ( var emp in query)
             {
+                if(emp.empAge>30)
                 Console.WriteLine(emp.avgSal+"\n");
             }
             {
